@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+    overflow-x: hidden;
+}
+
+.anujsaini:hover .anuj {
+    display: inline-block;
+}
+
+.anuj {
+    display: none;
+}

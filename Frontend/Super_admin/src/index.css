@@ -1,0 +1,31 @@
+@import "tailwindcss";
+.welcome-wrap {
+    padding: 40px 40px 24px;
+    background: #152354;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .banner-bg-01 {
+    max-width: 73px;
+    max-height: 73px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .banner-bg-02 {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    z-index: -1;
+  }
+  
+  .banner-bg-03 {
+   
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
