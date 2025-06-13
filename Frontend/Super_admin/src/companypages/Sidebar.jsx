@@ -7,7 +7,7 @@ import { FaChevronUp } from "react-icons/fa6";
 import { FiLogOut, FiUserPlus } from "react-icons/fi";
 import { IoExit, IoHome, IoLogOut } from "react-icons/io5";
 import { MdAccountBox } from "react-icons/md";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function Sidebar1({ closeSidebar }) {
 
