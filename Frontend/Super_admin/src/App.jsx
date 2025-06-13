@@ -179,6 +179,7 @@ import Bseven from './factorycom/Bseven';
 import Bnine from './factorycom/Bnine';
 import Bten from './factorycom/Bten';
 import NewPages from './factorycom/NewPages';
+import SubSuperAdminList from './pages/SubSuperAdmin';
 
 const NotFound = () => (
   <h1 className="text-center mt-10 text-red-600 text-xl">404 - Page Not Found</h1>
@@ -209,6 +210,7 @@ const router = createBrowserRouter([
       { path: "/auditlogs", element: <AuditLogs /> },
       { path: "/reports", element: <Reports /> },
       { path: "/settings", element: <Settings /> },
+       { path: "/sub-super-admin", element: <SubSuperAdminList /> },
 
     ],
   },

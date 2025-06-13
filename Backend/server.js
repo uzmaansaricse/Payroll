@@ -9,6 +9,7 @@ import superAdminRoutes from "./routes/superAdminRoute.js";
 import initSuperAdmin from "./utils/initSuperAdmin.js";
 import formSchemaRoute from './routes/formSchemaRoute.js';
 import companyRoutes from './routes/companyRoute.js'; // ✅ Added company route
+import subSuperAdminRoutes from './routes/subSuperAdminRoute.js';
 
 
 
@@ -21,6 +22,7 @@ initSuperAdmin();
 app.use('/api/formschema', formSchemaRoute);
 connectDB();
 app.use("/api/superadmin", superAdminRoutes);
+ app.use("/api/sub-super-admin", subSuperAdminRoutes);
 app.use("/api/company", companyRoutes); // ✅ Mounted company route
 
 
