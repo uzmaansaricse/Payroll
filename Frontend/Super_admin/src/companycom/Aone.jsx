@@ -1,10 +1,12 @@
  import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addCompanyName } from "../slices/companySlice";
 
 export default function Aone() {
   const [factories, setFactories] = useState([]);
   const [selectedFactory, setSelectedFactory] = useState('');
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchFactories = async () => {
       try {
@@ -21,6 +23,13 @@ export default function Aone() {
     fetchFactories();
   }, []);
 
+  const handleSelectionOfCompany = (e) => {
+    const factory = e.target.value; // Capture value directly
+    setSelectedFactory(factory);
+   
+    dispatch(addCompanyName({ obj: factory })); // Use the latest value
+};
+
   return (
     <div className='p-5 w-full h-screen'>
       <h2 className="text-2xl font-bold">🔐 Company Set Up</h2>
@@ -29,11 +38,11 @@ export default function Aone() {
         <label className="block mb-2 font-medium text-sm">Select Company</label>
         <select
           value={selectedFactory}
-          onChange={(e) => setSelectedFactory(e.target.value)}
+          onChange={(e) =>{ handleSelectionOfCompany(e)}}
           className="border rounded p-2 w-full"
         >
           {factories.map(f => (
-            <option key={f._id} value={f._id}>{f.companyName}</option>
+            <option key={f._id} value={f.name}>{f.companyName}</option>
           ))}
         </select>
       </div>

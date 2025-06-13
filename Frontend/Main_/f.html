@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./form.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    
+    <title>Forget Password</title>
+</head>
+
+<body>
+  <!-- navbar-start -->
+  <nav class="navbar">
+    <a href="index.html">
+        <div class="logo">
+            <img src="images/payroll-logo.jpeg" alt="Logo">
+        </div>
+    </a>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <ul id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-us.html">Why Us</a></li>
+        <li>
+            <a href="#">Solutions ▼</a>
+            <div class="dropdown">
+                <a href="for-small-businesses.html">For Small Businesses</a>
+                <a href="for-Enterprises.html">For Enterprises</a>
+                <a href="For-HR-Team.html">For HR Teams</a>
+            </div>
+        </li>
+        <li>
+            <a href="#">Features ▼</a>
+            <div class="dropdown">
+                <a href="Payroll-Processing.html">Payroll Processing</a>
+                <a href="Tax-Compilance.html">Tax & Compliance</a>
+            </div>
+        </li>
+
+        <li><a href="Reasource.html">Resources</a></li>
+        <li>
+            <a href="#">Login ▼</a>
+            <div class="dropdown">
+                <a href="/login-as-super-Admin.html">Login as Super Admin</a>
+                <a href="/login-as-admin.html">Login as Admin</a>
+                <a href="/login-as-Employee.html">Login as Employee</a>
+            </div>
+        </li>
+        <div>
+            <div class="btn desktop-btn">
+                <a href="form1.html"><button>Request a Demo</button></a>
+            </div>
+            <div class="btn desktop-btn">
+                <a href="Contact-Us.html"><button>Contact Us</button></a>
+            </div>
+        </div>
+    </ul>
+</nav>
+<!-- navbar-end -->
+
+  <div class="singup-container">
+    <div class="signup-card">
+      <h2>Forgot Password</h2>
+      <form id="forgotPasswordForm">
+          <label for="email">Email:</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+  
+          <button type="submit" class="otp btn-submit">Send OTP</button>
+      </form>
+      <div class="links">
+          <a href="login-as-super-Admin.html">Login</a>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+      document.getElementById("forgotPasswordForm").addEventListener("submit", async function(e) {
+          e.preventDefault();
+          const email = document.getElementById("email").value.trim();
+  
+          try {
+              const response = await fetch("http://localhost:5000/api/superadmin/forgot-password", {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({ email })
+              });
+  
+              const result = await response.json();
+  
+              if (response.ok) {
+                  Swal.fire({
+                      icon: "success",
+                      title: "OTP Sent",
+                      text: "A reset token has been sent to your email.",
+                      confirmButtonText: "Close",
+                      confirmButtonColor: "#007bff",
+                      background: "#1b1e2b",
+                      color: "#ffffff",
+                      iconColor: "#28a745",
+                      customClass: {
+                          popup: "rounded-xl shadow-lg"
+                      }
+                  }).then(() => {
+                      window.location.href = "./r.html";
+                  });
+              } else {
+                  Swal.fire({
+                      icon: "error",
+                      title: "Error",
+                      text: result.error,
+                      confirmButtonText: "Close",
+                      confirmButtonColor: "#dc3545",
+                      background: "#1b1e2b",
+                      color: "#ffffff",
+                      iconColor: "#dc3545"
+                  });
+              }
+          } catch (error) {
+              console.error("Error sending OTP:", error);
+              Swal.fire({
+                  icon: "error",
+                  title: "Something went wrong",
+                  text: "Error sending OTP.",
+                  confirmButtonText: "Close",
+                  confirmButtonColor: "#dc3545",
+                  background: "#1b1e2b",
+                  color: "#ffffff",
+                  iconColor: "#dc3545"
+              });
+          }
+      });
+  </script>
+
+</body>
+
+</html>

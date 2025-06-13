@@ -7,7 +7,10 @@ import { FaChevronUp } from "react-icons/fa6";
 import { FiLogOut, FiUserPlus } from "react-icons/fi";
 import { IoExit, IoHome, IoLogOut } from "react-icons/io5";
 import { MdAccountBox } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router";
+import { addToCompany, removeFromCompany } from "../slices/companySlice";
+import { toast } from "react-toastify";
 
 export default function Sidebar1({ closeSidebar }) {
 
@@ -33,6 +36,10 @@ const Accordion = ({ closeSidebar }) => {
     const [openMenu2, setOpenMenu2] = useState(null);
     const [active, setActive] = useState("one");
     const [checkedItems, setCheckedItems] = useState({});
+    const dispatch = useDispatch();
+    const Company = useSelector((state)=>state.company.company);
+
+    const Dummy = useSelector((state)=>state.company)
 
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
@@ -44,12 +51,34 @@ const Accordion = ({ closeSidebar }) => {
         setOpenMenu2(openMenu2 === menu2 ? null : menu2);
     };
 
+    
+
     const handleCheckboxChange = (itemKey) => {
-        setCheckedItems(prev => ({
+    if (!itemKey) {
+        toast.error("itemKey is undefined");
+        return;
+    }
+
+    setCheckedItems(prev => {
+        const newCheckedState = !prev[itemKey]; // Ensure updated state
+
+        if (newCheckedState) {
+            dispatch(addToCompany({ service: itemKey })); // Correct payload structure
+
+            console.log(Dummy);
+
+        } else {
+            dispatch(removeFromCompany({ service: itemKey }));
+
+            console.log(Dummy);
+        }
+
+        return {
             ...prev,
-            [itemKey]: !prev[itemKey]
-        }));
-    };
+            [itemKey]: newCheckedState
+        };
+    });
+};
 
     return (
         <div className="space-y-1 overflow-y-auto h-full overflow-hidden">

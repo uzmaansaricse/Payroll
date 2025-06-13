@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Small Business | Masu Payroll</title>
+
+    <!-- bootstrap links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!--  TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--  Font Awesome (For Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!--  Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- navbar-start -->
+    <nav class="navbar">
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="Logo">
+            </div>
+        </a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="why-us.html">Why Us</a></li>
+            <li>
+                <a href="#">Solutions ▼</a>
+                <div class="dropdown">
+                    <a href="for-small-businesses.html">For Small Businesses</a>
+                    <a href="for-Enterprises.html">For Enterprises</a>
+                    <a href="For-HR-Team.html">For HR Teams</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Features ▼</a>
+                <div class="dropdown">
+                    <a href="Payroll-Processing.html">Payroll Processing</a>
+                    <a href="Tax-Compilance.html">Tax & Compliance</a>
+                </div>
+            </li>
+
+            <!-- <li><a href="Reasource.html">Resources</a></li> -->
+            <li>
+                <a href="#">Login ▼</a>
+                <div class="dropdown">
+                    <a href="/login-as-super-Admin.html">Login as Super Admin</a>
+                    <a href="/login-as-admin.html">Login as Admin</a>
+                    <a href="/login-as-Employee.html">Login as Employee</a>
+                </div>
+            </li>
+            <div>
+                <div class="btn desktop-btn">
+                    <a href="form1.html"><button>Request a Demo</button></a>
+                </div>
+                <div class="btn desktop-btn">
+                    <a href="Contact-Us.html"><button>Contact Us</button></a>
+                </div>
+            </div>
+        </ul>
+
+    </nav>
+    <!-- navbar-end -->
+    <!--  Hero Section -->
+    <section class="relative text-white">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="bg-cover bg-center h-[500px] flex flex-col justify-center items-center text-center px-6"
+            style="background-image: url('./images/2147707816.jpg');">
+            <h1 class="text-5xl font-bold relative z-10 text-white">Payroll Solutions for Small Businesses</h1>
+            <p class="mt-4 text-lg relative z-10">Smart, affordable & automated payroll for startups & SMEs.</p>
+            <a href="#"
+                class="mt-6 bg-yellow-400 text-black font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-yellow-500 transition relative z-10">
+                Get Started Now
+            </a>
+        </div>
+    </section>
+
+    <!--  Key Payroll Challenges -->
+    <section class="max-w-6xl mx-auto py-16 px-6">
+        <h2 class="text-4xl font-bold text-center">Key Payroll Challenges for Small Businesses</h2>
+        <div class="grid md:grid-cols-2 gap-10 mt-10 respo-sec">
+            <div class="flex space-x-4 bg-white p-6 rounded-lg shadow-md">
+                <i class="fas fa-clock  text-4xl" style="color: #152354;"></i>
+                <div>
+                    <h3 class="text-2xl font-semibold">Time-Consuming Processes</h3>
+                    <p class="mt-2 text-gray-600">Manual payroll takes too much time every month.</p>
+                </div>
+            </div>
+            <div class="flex space-x-4 bg-white p-6 rounded-lg shadow-md">
+                <i class="fas fa-exclamation-triangle  text-4xl" style="color: #152354;"></i>
+                <div>
+                    <h3 class="text-2xl font-semibold">Compliance Risks</h3>
+                    <p class="mt-2 text-gray-600">Small errors in tax filing can lead to penalties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  Informative Section with Image -->
+    <section class="max-w-6xl mx-auto py-16 px-6 flex flex-col md:flex-row items-center gap-10">
+        <div class="md:w-1/2">
+            <h2 class="text-4xl font-bold">Empowering Small Businesses with Smart Payroll Solutions</h2>
+            <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+                Managing payroll manually can be overwhelming, especially for small businesses with limited resources.
+                Masu Payroll takes the complexity out of salary processing, tax deductions, and compliance, allowing
+                business owners to focus on growth.
+                <br><br>
+                Our automated system ensures that your employees are paid accurately and on time while staying compliant
+                with tax regulations. Whether you're a startup or a growing business, our user-friendly payroll solution
+                adapts to your needs. Experience **error-free salary processing, automated tax filings, and a seamless
+                employee experience** with Masu Payroll.
+            </p>
+        </div>
+        <div class="md:w-1/2 mt-10 md:mt-0">
+            <img src="/images/1820.jpg" class="rounded-lg shadow-lg" alt="Payroll Benefits">
+        </div>
+    </section>
+
+    <!--  FAQ Section (Updated Design) -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center">Frequently Asked Questions</h2>
+            <div class="mt-10 space-y-6">
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="text-lg font-semibold cursor-pointer flex justify-between">
+                        How does Masu Payroll save time?
+                        <i class="fas fa-chevron-down"></i>
+                    </summary>
+                    <p class="mt-3 text-gray-600">Masu Payroll automates salary calculations, tax deductions, and
+                        payments, reducing hours of manual work.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="text-lg font-semibold cursor-pointer flex justify-between">
+                        Is my data secure?
+                        <i class="fas fa-chevron-down"></i>
+                    </summary>
+                    <p class="mt-3 text-gray-600">Yes, we use bank-grade encryption and compliance measures to ensure
+                        100% security.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!--  CTA Section -->
+    <!-- banner-page -->
+    <div class="container-fluid banner-page">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Take control of all your HR operations and experience the difference!</h1>
+                <div class="btn">
+                    <button>Get a demo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Why Small Businesses Need Smart Payroll? -->
+    <section class="max-w-6xl mx-auto py-16 px-6 flex flex-col md:flex-row items-center">
+        <!-- Left Side: Image -->
+        <div class="md:w-1/2">
+            <img src="./images/2150377157.jpg" class="rounded-lg shadow-lg" alt="Payroll Benefits">
+        </div>
+
+        <!-- Right Side: Content -->
+        <div class="md:w-1/2 mt-10 md:mt-0" style="    padding: 0 17px 0;
+">
+            <h2 class="text-4xl font-bold">Why Small Businesses Need Smart Payroll?</h2>
+            <p class="mt-2 text-lg text-gray-700 leading-relaxed">
+                Payroll is one of the most critical yet time-consuming tasks for small businesses. Manually handling
+                salaries, tax deductions, and compliance takes hours every month.
+            </p>
+            <p class="mt-2 text-lg text-gray-700 leading-relaxed">
+                With an automated payroll system, you can process salaries in minutes, ensure accurate tax calculations,
+                and eliminate compliance risks. No more delays, no more errors – just seamless payroll management.
+            </p>
+            <p class="mt-2 text-lg text-gray-700 leading-relaxed">
+                Whether you're a startup or a growing company, investing in a smart payroll solution saves time, reduces
+                costs, and keeps your business legally compliant.
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container container-footer">
+            <div class="footer-section">
+                <img src="./images/payroll-logo.jpeg" alt="Company Logo" class="footer-logo" />
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone-alt"></i> +1 234 567 890</p>
+                <p><i class="fas fa-envelope"></i> support@payrollapp.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Payroll St, Suite 100, City, Country</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Why Us</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Features</a></li>
+                    <!-- <li><a href="#">Pricing</a></li> -->
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter to get the latest updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container container-footer">
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Payroll Processing</a></li>
+                    <li><a href="#">Tax & Compliance</a></li>
+                    <li><a href="#">Time & Attendance</a></li>
+                    <li><a href="#">Benefits Management</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">White Papers</a></li>
+                    <li><a href="#">Webinars</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Customer Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Support Tickets</a></li>
+                    <li><a href="#">Knowledge Base</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>2025 © All rights reserved. MASU
+            </p>
+        </div>
+    </footer>
+
+
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

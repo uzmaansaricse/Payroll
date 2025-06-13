@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="256x256" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+    <meta name="msapplication-TileImage" content="img/favicon.png">
+    <meta name="msapplication-TileColor" content="#152354">
+    <title>MASU CONSULTANCY Your Trusted Partner in HR & Payroll Managment</title>
+    <!-- bootstrap links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- icon-links  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- css-stylesheet links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <!-- navbar-start -->
+    <nav class="navbar">
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/logo.jpeg" alt="Logo">
+            </div>
+        </a>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="why-us.html">Why Us</a></li>
+            <li>
+                <a href="#">Solutions ▼</a>
+                <div class="dropdown">
+                    <a href="for-small-businesses.html">For Small Businesses</a>
+                    <a href="for-Enterprises.html">For Enterprises</a>
+                    <a href="For-HR-Team.html">For HR Teams</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Features ▼</a>
+                <div class="dropdown">
+                    <a href="Payroll-Processing.html">Payroll Processing</a>
+                    <a href="Tax-Compilance.html">Tax & Compliance</a>
+                </div>
+            </li>
+
+            <!-- <li><a href="Reasource.html">Resources</a></li> -->
+            <li>
+                <a href="#">Login ▼</a>
+                <div class="dropdown">
+                    <a href="/login-as-super-Admin.html">Login as Super Admin</a>
+                    <a href="/login-as-admin.html">Login as Admin</a>
+                    <a href="/login-as-Employee.html">Login as Employee</a>
+                </div>
+            </li>
+            <div>
+                <div class="btn desktop-btn">
+                    <a href="form1.html"><button> Demo</button></a>
+                </div>
+                <div class="btn desktop-btn">
+                    <a href="Contact-Us.html"><button>Contact Us</button></a>
+                </div>
+            </div>
+        </ul>
+
+    </nav>
+    <!-- navbar-end -->
+
+    <!-- banner -->
+    <section class="banner">
+        <div class="banner-content">
+            <div class="slider">
+                <div class="slide active">
+                    <h2>Effortless Payroll Management</h2>
+                    <p>Automate salaries, compliance & employee benefits easily.</p>
+                    <a href="#" class="btn"><button>Get Started</button></a>
+                </div>
+                <div class="slide">
+                    <h2>Save Time & Reduce Errors</h2>
+                    <p>Handle payroll processing with 100% accuracy.</p>
+                    <a href="#" class="btn"><button>Learn More</button></a>
+                </div>
+                <div class="slide">
+                    <h2>Best Payroll Software for Businesses</h2>
+                    <p>Designed for startups, SMBs, and enterprises.</p>
+                    <a href="#" class="btn"><button>Try Free</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- companies-partner  -->
+    <section class="trusted-partners">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left Column -->
+                <div class="col-sm-3">
+                    <div class="trusted-label">Our Trusted Partners</div>
+                </div>
+
+                <!-- Right Column - Infinite Logo Scroll -->
+                <div class="col-sm-9">
+                    <div class="slider-container">
+                        <div class="logo-slider" id="logoSlider">
+                            <img src="./images/bird-colorful-logo-gradient-vector-removebg-preview.png" alt="Company 1">
+                            <img src="./images/cosmetic-beauty-spa-massage-wedding-logo-letter-l_68880-1749-removebg-preview.png"
+                                alt="Company 2">
+                            <img src="./images/dk-letter-logo-initial-colorful-gradient_343694-1303-removebg-preview.png"
+                                alt="Company 5">
+                            <img src="./images/indonesian-halal-logo-new-branding-2022_17005-1495-removebg-preview.png"
+                                alt="Company 3">
+                            <img src="./images/logo3-removebg-preview (1).png" alt="Company 4">
+                            <img src="./images/dk-letter-logo-initial-colorful-gradient_343694-1303-removebg-preview.png"
+                                alt="Company 5">
+
+                            <!-- Duplicate Logos for Smooth Scroll Effect -->
+                            <img src="./images/bird-colorful-logo-gradient-vector-removebg-preview.png" alt="Company 1">
+                            <img src="./images/cosmetic-beauty-spa-massage-wedding-logo-letter-l_68880-1749-removebg-preview.png"
+                                alt="Company 2">
+                            <img src="./images/dk-letter-logo-initial-colorful-gradient_343694-1303-removebg-preview.png"
+                                alt="Company 5">
+                            <img src="./images/indonesian-halal-logo-new-branding-2022_17005-1495-removebg-preview.png"
+                                alt="Company 3">
+                            <img src="./images/logo3-removebg-preview (1).png" alt="Company 4">
+                            <img src="./images/dk-letter-logo-initial-colorful-gradient_343694-1303-removebg-preview.png"
+                                alt="Company 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- platforms-features -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row feature-platforms">
+                <h2>PLATFORM FEATURES</h2>
+                <h6>Everything you need to create a high-performance culture</h6>
+
+                <div class="features-wrapper">
+                    <div class="feature-box">
+                        <img src="./images/core hrms.svg" alt="feature-box">
+                        <h5>Core HRMS</h5>
+                        <p>Employee management, directory, workflows, self-services, document management</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/attendence.svg" alt="feature-box">
+                        <h5>Attendance</h5>
+                        <p>Monitor attendance, schedule smart shifts, and make many attendance methods possible.</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/3.svg" alt="feature-box">
+                        <h5>Leave Management</h5>
+                        <p>Configure every type of leave policy and use leave dashboards and reports for tracking</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/payroll.svg" alt="feature-box">
+                        <h5>Payroll</h5>
+                        <p>End-to-end payroll processing, taxing, benefits tracking, exemptions, User Payslip.</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/task managment.svg" alt="feature-box">
+                        <h5>Task Management</h5>
+                        <p>Plan tasks, track and complete them efficiently, delegate task and set reminders</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/performance-managment.svg" alt="feature-box">
+                        <h5>Performance Management</h5>
+                        <p>Staff evaluations, goal setting, talent management, and ongoing 360-degree feedback.</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/onboarding.svg" alt="feature-box">
+                        <h5>Onboarding</h5>
+                        <p>Acquire talents, skills, and have a smooth run for employees from day one.</p>
+                        <a href="">Explore more →</a>
+                    </div>
+
+                    <div class="feature-box">
+                        <img src="./images/recuirment.svg" alt="">
+                        <h5>Tax & Compliance</h5>
+                        <p>Automated tax calculations, regulatory compliance tracking, and seamless integration to
+                            ensure accuracy and legal adherence.</p>
+                        <a href="">Explore more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payroll Management -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row payroll-management align-items-center">
+                <div class="col-lg-6 col-md-12 text-center text-md-start">
+                    <img src="./images/project-managers_203633-532.avif" alt="Payroll Management" class="img-fluid">
+                </div>
+                <div class="col-lg-6 col-md-12 text">
+                    <h2>PAYROLL MANAGEMENT</h2>
+                    <p>
+                        Simplify the complex payroll processes with Masu Consultancy – a powerful, secure, accurate,
+                        and fully compliant system! Masu Consultancy ensures quicker processing, precise payouts,
+                        and seamless payroll administration. Businesses can avoid financial and legal risks,
+                        ensuring employees are paid accurately and on time.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-check"></i> Quickly determine payroll calculations and deductions</li>
+                        <li><i class="fa fa-check"></i> Generate accurate Payslips</li>
+                        <li><i class="fa fa-check"></i> Using payroll management to plan future costs</li>
+                        <li><i class="fa fa-check"></i> Secure Data’s and Privacy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Step By Step Guide Start -->
+    <section class="stp-30 sbp-30">
+        <div class="container">
+            <div class="flex-center">
+                <div class="content-wrapper">
+                    <div class="text-container">
+                        <p class="highlight-text wow animate__animated animate__fadeInUp">
+                            How it works
+                        </p>
+
+                        <h1 class="main-heading wow animate__animated animate__fadeInDown">
+                            A Step-by-Step Guide to Our Platform
+                        </h1>
+
+                        <p class="description wow animate__animated animate__fadeInUp">
+                            Explore our platform with ease! Sign up, select your industry, and
+                            seamlessly integrate our tailored payment solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="steps-wrapper">
+                <div class="step">
+                    <div class="icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <h4 class="step-title">Create An Account</h4>
+                    <p class="step-description">
+                        Join our platform effortlessly! Streamlined user registration with
+                        secure verification.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h4 class="step-title">Add Your Employees</h4>
+                    <p class="step-description">
+                        Add your employees easily and manage their data securely.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="icon">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <h4 class="step-title">Run Your First Payroll</h4>
+                    <p class="step-description">
+                        Run your first payroll with our intuitive platform.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step By Step Guide End -->
+
+    <!-- banner-page -->
+    <div class="container-fluid banner-page">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Take control of all your HR operations and experience the difference!</h1>
+                <div class="btn batton">
+                    <button>Get a demo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- what-makes-better  -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row makes-better">
+                <h1>What makes MASU CONSULTANCY better?</h1>
+                <p class="make-text">We offer an array of features designed to assist HR professionals in enhancing
+                    employee experiences, streamlining operations, and accelerating company growth</p>
+                <div class="col-sm-6">
+                    <div class="box">
+                        <h5>Mobile App</h5>
+                        <p>Comes with a feature-rich mobile app to allow the employees full accessibility of their own
+                            data.</p>
+                    </div>
+                    <div class="box">
+                        <h5>Top-notch Security and Privacy</h5>
+                        <p>Ensures watertight security through encryption at rest and SOC Type 2 certified cloud data
+                            centres.</p>
+                    </div>
+                    <div class="box">
+                        <h5>All-In-One Solution</h5>
+                        <p>Offers an integrated HR platform that centralizes all HR data and processes into a single,
+                            cohesive system.</p>
+                    </div>
+                    <div class="box">
+                        <h5>Fully Scalable</h5>
+                        <p>Can be scaled and adjusted to meet unique requirements as we serve customers from small
+                            startups to large enterprises.</p>
+                    </div>
+                    <div class="box">
+                        <h5>Smooth User Experience</h5>
+                        <p>Provides a clean and interactive interface that enhances the user experience</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <img src="/images/what's makes better.webp" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- intagration -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 integration">
+                    <div class="col-sm-6 integ-part1">
+                        <p class="inter">Integration</p>
+                        <h1>All in One Place All in Sync.</h1>
+                        <p>Experience seamless coordination with our comprehensive services. From accounting to payroll,
+                            we bring everything together in one place,</p>
+                    </div>
+                    <div class="col-sm-3 payment-gateways h-w">
+                        <i class="fas fa-credit-card inter-icon"></i>
+                        <h3>Payment Gateways</h3>
+                    </div>
+                    <div class="col-sm-3 h-w">
+                        <i class="fas fa-file-invoice-dollar inter-icon "></i>
+                        <h3>Tax Software Integration</h3>
+                    </div>
+                </div>
+                <div class="col-sm-12 integration integration-part">
+                    <div class="col-sm-3 payment-gateways h-w">
+                        <i class="fas fa-wallet inter-icon"></i>
+                        <h3>Expense Management</h3>
+                    </div>
+                    <div class="col-sm-3 h-w">
+                        <i class="fas fa-business-time inter-icon"></i>
+                        <h3>Time Tracking Systems</h3>
+                    </div>
+                    <div class="col-sm-3 payment-gateways h-w">
+                        <i class="fas fa-headset inter-icon"></i>
+                        <h3>Customer Relationship</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- pricing section  -->
+    <!-- <div class="pricing-plan">
+        <h6>Pricing</h6>
+        <h1>Our Pricing</h1>
+        <p>At Accupay, we believe in providing clear and flexible pricing options tailored to your business needs.</p>
+    </div> -->
+    <!-- <div class="container pricing-section"> -->
+    <!-- Basic Plan -->
+    <!-- <div class="plan">
+            <i class='fas fa-user iconic'></i>
+            <h2>Basic Plan</h2>
+            <p>Effortless business solutions tailored for you</p>
+            <div class="price">₹1000</div>
+            <p>- monthly</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Accurate and Timely</li>
+                <li><i class="fas fa-check"></i> Basic Financial Records</li>
+                <li><i class="fas fa-check"></i> Starting at $X per month</li>
+            </ul>
+            <div class="btn">
+                <button>Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div> -->
+
+    <!-- Standard Plan -->
+    <!-- <div class="plan">
+            <div class="popular">POPULAR</div>
+            <i class='fas fa-briefcase iconic'></i>
+            <h2>Standard Plan</h2>
+            <p>All packages come with additional benefits and features</p>
+            <div class="price">₹2000</div>
+            <p>- monthly</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Payroll Processing</li>
+                <li><i class="fas fa-check"></i> Full Bookkeeping</li>
+                <li><i class="fas fa-check"></i> Tax Preparation</li>
+            </ul>
+            <div class="btn">
+                <button>Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div> -->
+
+    <!-- Premium Plan -->
+    <!-- <div class="plan">
+            <i class='fas fa-crown iconic'></i>
+            <h2>Premium Plan</h2>
+            <p>Explore our case studies to see business benefits</p>
+            <div class="price">₹4000</div>
+            <p>- monthly</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Full Bookkeeping</li>
+                <li><i class="fas fa-check"></i> Tax Preparation</li>
+                <li><i class="fas fa-check"></i> Financial Advisory</li>
+            </ul>
+            <div class="btn">
+                <button>Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!-- //footer -->
+    <footer class="footer">
+
+        <div class="container container-footer">
+
+            <div class="footer-section">
+
+                <img src="./images/logo.jpeg" alt="Company Logo" class="footer-logo" />
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone-alt"></i> +1 234 567 890</p>
+                <p><i class="fas fa-envelope"></i> support@payrollapp.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Payroll St, Suite 100, City, Country</p>
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Why Us</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Features</a></li>
+                    <!-- <li><a href="#">Pricing</a></li> -->
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter to get the latest updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container container-footer">
+
+            <div class="footer-section">
+
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Payroll Processing</a></li>
+                    <li><a href="#">Tax & Compliance</a></li>
+                    <li><a href="#">Time & Attendance</a></li>
+                    <li><a href="#">Benefits Management</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">White Papers</a></li>
+                    <li><a href="#">Webinars</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Customer Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Support Tickets</a></li>
+                    <li><a href="#">Knowledge Base</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p> 2025 © All rights reserved. MASU
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
