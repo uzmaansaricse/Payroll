@@ -101,3 +101,36 @@ export const registerCompany = async (req, res) => {
     res.status(500).json({ message: 'Company registration failed', error: error.message });
   }
 };
+
+
+export const updateCompanyPermissions = async (req, res) => {
+  try {
+    const { companyName, permissions } = req.body;
+
+    if (!companyName || !Array.isArray(permissions)) {
+      return res.status(400).json({ message: 'Company name and permissions (as array) are required.' });
+    }
+
+    // Find and update company permissions
+    const company = await Company.findOneAndUpdate(
+      { companyName },
+      { $set: { permissions } },
+      { new: true }
+    );
+
+    if (!company) {
+      return res.status(404).json({ message: 'Company not found.' });
+    }
+
+    res.status(200).json({
+      message: 'Permissions updated successfully.',
+      companyId: company.companyId,
+      updatedPermissions: company.permissions
+    });
+
+  } catch (error) {
+    console.error('Error in updateCompanyPermissions:', error);
+    res.status(500).json({ message: 'Failed to update permissions.', error: error.message });
+  }
+};
+

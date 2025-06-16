@@ -1,5 +1,5 @@
 import { apiConnector } from "../apiconnector";
-import { superadminendpoints } from "../apis";
+import { companyendpoints, superadminendpoints } from "../apis";
 
 export async function registerCompany(companydata) { 
    try {
@@ -47,3 +47,15 @@ export async function registerCompany(companydata) {
         console.log("error in fetching",error);
       }
     }
+
+    export async function updateCompanyPermissions(companyName,permissions) {
+  try {
+    console.log("Updating permissions for company:", companyName, "with permissions:", permissions);
+    const response = await apiConnector("POST", companyendpoints.COMPANY_PERMISSIONS_UPDATE, {companyName, permissions});
+
+    console.log("Response from updateCompanyPermissions:", response);
+    return response?.data;
+  } catch (error) {
+    console.log("Error updating company permissions:", error);
+  }
+}

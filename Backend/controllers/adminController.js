@@ -47,12 +47,22 @@ export const loginAdmin = async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Incorrect password" });
 
     const token = jwt.sign({ adminId: admin._id }, process.env.JWT_SECRET, { expiresIn: "30d" });
-    res.status(200).json({ token });
+
+    // Get company permissions (assuming permissions are stored in Company)
+    const company = await Company.findOne({ companyId });
+    if (!company) return res.status(404).json({ message: "Company not found." });
+
+    res.status(200).json({
+      token,
+      permissions: company.permissions
+    });
+
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 // ❌ Delete Admin
 export const deleteAdmin = async (req, res) => {

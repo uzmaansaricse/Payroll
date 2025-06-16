@@ -7,4 +7,11 @@ export const superadminendpoints = {
   COMPANY_REGISTER: BASE_URL + "/company/register",
   SUB_ADMIN_REGISTER: BASE_URL + "/sub-super-admin/register",
   SUB_ADMIN_LIST: BASE_URL + "/sub-super-admin/getall",
+
 }
+
+export const companyendpoints = {
+ 
+  COMPANY_PERMISSIONS_UPDATE: BASE_URL + "/company/updatecompanypermissions",
+
+};

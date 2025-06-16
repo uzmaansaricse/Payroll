@@ -1,35 +1,49 @@
- import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCompanyName } from "../slices/companySlice";
-import { fetchCompaniesList } from '../services/operations/companyAPI';
+import { fetchCompaniesList, updateCompanyPermissions} from '../services/operations/companyAPI';
+import { toast } from 'react-toastify';
 
 export default function Aone() {
   const [factories, setFactories] = useState([]);
   const [selectedFactory, setSelectedFactory] = useState('');
   const dispatch = useDispatch();
+
+  const { companyName, company } = useSelector((state) => state.company);
+
   useEffect(() => {
     const fetchFactories = async () => {
       try {
         const res = await fetchCompaniesList();
-        console.log('FACTORIES:', res.data);
         setFactories(res.data);
         if (res.data.length > 0) {
-          setSelectedFactory(res.data[0]._id);
+          setSelectedFactory(res.data[0].companyName);
+          dispatch(addCompanyName({ obj: res.data[0].companyName }));
         }
       } catch (err) {
         console.error('Error fetching factories:', err);
       }
     };
     fetchFactories();
-  }, []);
+  }, [dispatch]);
 
   const handleSelectionOfCompany = (e) => {
-    const factory = e.target.value; // Capture value directly
-    setSelectedFactory(factory);
-   
-    dispatch(addCompanyName({ obj: factory })); // Use the latest value
-};
+    const factoryName = e.target.value;
+    setSelectedFactory(factoryName);
+    dispatch(addCompanyName({ obj: factoryName }));
+  };
+
+  const handleUpdatePermissions = async () => {
+    try {
+   //   console.log(company);
+      const res = await updateCompanyPermissions(companyName, company);
+      toast.success(res.message);
+    } catch (error) {
+      console.error('Failed to update permissions:', error);
+      //alert('Error updating permissions');
+    }
+  };
 
   return (
     <div className='p-5 w-full h-screen'>
@@ -39,13 +53,20 @@ export default function Aone() {
         <label className="block mb-2 font-medium text-sm">Select Company</label>
         <select
           value={selectedFactory}
-          onChange={(e) =>{ handleSelectionOfCompany(e)}}
+          onChange={(e) => handleSelectionOfCompany(e)}
           className="border rounded p-2 w-full"
         >
           {factories.map(f => (
-            <option key={f._id} value={f.name}>{f.companyName}</option>
+            <option key={f._id} value={f.companyName}>{f.companyName}</option>
           ))}
         </select>
+
+        <button
+          onClick={handleUpdatePermissions}
+          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Update Permissions
+        </button>
       </div>
     </div>
   );
