@@ -20,7 +20,8 @@ export const registerCompany = async (req, res) => {
       customFields,
       approvalConfig,  // Include approvalConfig
       removedStaticFields, // Include removedStaticFields
-      nonRequiredFields // Include nonRequiredFields
+      nonRequiredFields, // Include nonRequiredFields
+       permissions
     } = req.body;
 
     // Check for existing email
@@ -67,6 +68,7 @@ export const registerCompany = async (req, res) => {
       approvalConfig,  // Add approvalConfig field
       removedStaticFields,  // Add removedStaticFields field
       nonRequiredFields, // Add nonRequiredFields field
+         permissions, 
       companyId,
       adminAccessCode,
       status: 'approved',

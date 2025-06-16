@@ -22,6 +22,10 @@ initSuperAdmin();
 app.use('/api/formschema', formSchemaRoute);
 connectDB();
 app.use("/api/superadmin", superAdminRoutes);
+
+
+
+
  app.use("/api/sub-super-admin", subSuperAdminRoutes);
 app.use("/api/company", companyRoutes); // ✅ Mounted company route
 
@@ -30,5 +34,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
 

@@ -118,7 +118,11 @@ const companySchema = new mongoose.Schema({
   registrationDate: {
     type: Date,
     default: Date.now,
-  }
+  },
+  permissions: {
+  type: [String], 
+  default: [],
+}
 });
 
 const Company = mongoose.model('Company', companySchema);

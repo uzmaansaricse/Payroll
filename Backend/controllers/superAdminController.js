@@ -26,6 +26,8 @@ export const getAdminsByCompanyId = async (req, res) => {
 };
 
 
+
+
 // 🔐 Login - Now uses DB password instead of .env
 export const loginSuperAdmin = async (req, res) => {
   const { email, password } = req.body;
