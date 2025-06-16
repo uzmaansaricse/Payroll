@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchCompaniesList } from "../services/operations/companyAPI";
 
 const CompanyData = () => {
   const navigate = useNavigate();
@@ -11,20 +12,25 @@ const CompanyData = () => {
   const [selectedView, setSelectedView] = useState("Admins");
   const [selectedCompanyId, setSelectedCompanyId] = useState("");
 
-  useEffect(() => {
+
     // Fetch companies data from the updated API endpoint
-    fetch('http://localhost:5000/api/superadmin/companies')
-      .then(response => response.json())
-      .then(data => {
-        setCompanies(data);  // Set companies data in state
-        if (data.length > 0) {
-          setSelectedCompanyId(data[0].companyId); // Default select first company
-        }
-      })
-      .catch(error => {
-        console.error("Error fetching companies:", error);
-      });
+   useEffect(() => {
+  const fetchCompanies = async () => {
+    try {
+      const res = await fetchCompaniesList();
+      console.log('COMPANIES:', res.data);
+      setCompanies(res.data);
+      if (res.data.length > 0) {
+        setSelectedCompanyId(res.data[0].companyId);
+      }
+    } catch (err) {
+      console.error('Error fetching companies:', err);
+    }
+  }
+  fetchCompanies();
   }, []);
+  
+
 
   // Get the selected company based on selectedCompanyId
   const selectedCompany = companies.find((c) => c.companyId === selectedCompanyId);

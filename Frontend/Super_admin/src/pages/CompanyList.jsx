@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CompanyViewModal from "./CompanyViewModel";
+import { fetchCompaniesList } from "../services/operations/companyAPI";
 
 const CompanyList = () => {
   const [companies, setCompanies] = useState([]);
@@ -12,8 +13,7 @@ const CompanyList = () => {
   const fetchCompanies = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/superadmin/companies");
-      console.log("Company Data:", res.data);
+      const res = await fetchCompaniesList();
       const formattedCompanies = res.data.map((company) => ({
         ...company,
         adminEmail: company.admin?.email || company.adminEmail,

@@ -180,6 +180,7 @@ import Bnine from './factorycom/Bnine';
 import Bten from './factorycom/Bten';
 import NewPages from './factorycom/NewPages';
 import SubSuperAdminList from './pages/SubSuperAdmin';
+import SubSuperAdminLogin from './pages/LoginasSubSuperAdmin';
 
 const NotFound = () => (
   <h1 className="text-center mt-10 text-red-600 text-xl">404 - Page Not Found</h1>
@@ -854,6 +855,11 @@ const router = createBrowserRouter([
         element: <PersonalDetailTable2 />
       }
     ]
+  },
+
+  {
+    path: "/login-as-subsuperadmin",
+    element: <SubSuperAdminLogin />
   }
 
 
@@ -866,13 +872,16 @@ function App() {
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     const token = query.get('token');
+    console.log(token);
     if (token) {
       localStorage.setItem('superAdminToken', token);
+      
       console.log('✅ Token stored from URL:', token);
     }
   }, []);
-
   return <RouterProvider router={router} />;
 }
+
+
 
 export default App;

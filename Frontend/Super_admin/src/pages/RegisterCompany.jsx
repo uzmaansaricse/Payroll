@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { registerCompany } from "../services/operations/companyAPI";
 
 function RegisterCompany() {
   const navigate = useNavigate();
@@ -119,8 +120,7 @@ function RegisterCompany() {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/api/company/register", fullForm);
-      const data = res.data;
+      const data = await registerCompany(fullForm);
       Swal.fire({
         icon: "success",
         title: "Success",

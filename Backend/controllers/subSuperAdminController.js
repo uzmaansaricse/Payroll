@@ -54,6 +54,7 @@ export const loginSubSuperAdmin = async (req, res) => {
       id: admin._id,
       email: admin.email,
       permissions: admin.permissions,
+      accountType:"subsuperadmin"
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" });
@@ -66,6 +67,7 @@ export const loginSubSuperAdmin = async (req, res) => {
         name: admin.name,
         email: admin.email,
         permissions: admin.permissions,
+        accountType:"subsuperadmin"
       },
     });
   } catch (err) {

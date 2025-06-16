@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addCompanyName } from "../slices/companySlice";
+import { fetchCompaniesList } from '../services/operations/companyAPI';
 
 export default function Aone() {
   const [factories, setFactories] = useState([]);
@@ -10,7 +11,7 @@ export default function Aone() {
   useEffect(() => {
     const fetchFactories = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/superadmin/companies');
+        const res = await fetchCompaniesList();
         console.log('FACTORIES:', res.data);
         setFactories(res.data);
         if (res.data.length > 0) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PlusCircle, Search } from "lucide-react";
 import axios from 'axios';
+import { editSubSuperAdmins, fetchSubSuperAdmins, MakeSubSuperAdmins } from "../services/operations/companyAPI";
 
 const SubSuperAdminComponent = () => {
   const [search, setSearch] = useState("");
@@ -13,8 +14,9 @@ const SubSuperAdminComponent = () => {
   useEffect(() => {
     const fetchlist = async()=>{
       try{
-        const response = await axios.get("http://localhost:5000/api/sub-super-admin/getall");
-        setAdmins(response?.data?.data)
+       const response = await fetchSubSuperAdmins()
+       console.log(response);
+        setAdmins(response);
       }catch(error){
         console.log("error in fetching",error);
       }
@@ -33,7 +35,7 @@ const SubSuperAdminComponent = () => {
     console.log(adminData);
     if (editingAdmin) {
         try{
-      const response = await axios.post("http://localhost:5000/api/sub-super-admin/edit",editingAdmin);
+      const response = await editSubSuperAdmins(adminData);
       console.log(response);
       }catch(error){
         console.log(error);
@@ -43,8 +45,8 @@ const SubSuperAdminComponent = () => {
       );
     } else {
       try{
-      const response = await axios.post("http://localhost:5000/api/sub-super-admin/register",adminData);
-      console.log(response);
+     const response =await  MakeSubSuperAdmins(adminData);
+     console.log(response);
       }catch(error){
         console.log(error);
       }
