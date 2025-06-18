@@ -64,6 +64,7 @@ import Employmaster from './components/Employmaster'
 import LeaveBalance from './components/LeaveBalance'
 import Actuals from './components/Actuals'
 import Declaration from './components/Declaration'
+import Login from './authentaction/Login'
 
 export default function App() {
   const router = createBrowserRouter([
@@ -79,6 +80,7 @@ export default function App() {
           path: "/leavebalance",
           element: <LeaveBalance />
         },
+
         {
           path: "/actuals",
           element: <Actuals />
@@ -317,7 +319,11 @@ export default function App() {
           element: <PersonalDetailTable />
         }
       ])
-    }
+    },
+    {
+      path: '/login',
+      element: <Login />
+    },
   ])
   return (
     <RouterProvider router={router} />
