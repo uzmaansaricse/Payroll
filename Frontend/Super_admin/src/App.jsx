@@ -181,6 +181,7 @@ import Bten from './factorycom/Bten';
 import NewPages from './factorycom/NewPages';
 import SubSuperAdminList from './pages/SubSuperAdmin';
 import SubSuperAdminLogin from './pages/LoginasSubSuperAdmin';
+import LoginSuperAdmin from './authentaction/LoginSuperAdmin';
 
 const NotFound = () => (
   <h1 className="text-center mt-10 text-red-600 text-xl">404 - Page Not Found</h1>
@@ -211,11 +212,15 @@ const router = createBrowserRouter([
       { path: "/auditlogs", element: <AuditLogs /> },
       { path: "/reports", element: <Reports /> },
       { path: "/settings", element: <Settings /> },
-       { path: "/sub-super-admin", element: <SubSuperAdminList /> },
+      { path: "/sub-super-admin", element: <SubSuperAdminList /> },
 
     ],
   },
-
+  // authentication//
+  {
+    path: 'loginsuperadmin',
+    element: <LoginSuperAdmin />
+  },
   //Company page
   {
     path: "/admindashboard",
@@ -875,7 +880,7 @@ function App() {
     console.log(token);
     if (token) {
       localStorage.setItem('superAdminToken', token);
-      
+
       console.log('✅ Token stored from URL:', token);
     }
   }, []);
