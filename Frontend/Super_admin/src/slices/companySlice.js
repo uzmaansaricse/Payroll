@@ -15,8 +15,7 @@ const companySlice = createSlice({
 
     addCompanyName:(state,action)=>{
 
-        state.company = []
-        state.totalServices = 0
+        
 
         const obj = action.payload.obj
 
@@ -55,9 +54,6 @@ const companySlice = createSlice({
     }
 },
     resetCompany: (state) => {
-      state.company = []
-      state.totalServices = 0
-      
       toast.success(`Cart reset`, { position: "top-right" });
     
     },

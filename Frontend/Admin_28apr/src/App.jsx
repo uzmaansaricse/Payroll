@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router'
 import Layout from './pages/Layout'
 import AdminDashboard from './pages/AdminDashboard'
 import ViewDetailspage from './components/ViewDetailspage'
@@ -65,12 +65,14 @@ import LeaveBalance from './components/LeaveBalance'
 import Actuals from './components/Actuals'
 import Declaration from './components/Declaration'
 import Login from './authentaction/Login'
+import { useSelector } from 'react-redux'
 
 export default function App() {
+  const {token} = useSelector((state)=> state.user)
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+       element: token ? <Layout /> : <Navigate to="/login" replace />,
       children: ([
         {
           path: "/",

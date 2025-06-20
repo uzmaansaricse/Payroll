@@ -1,23 +1,54 @@
 import React from 'react';
 import { useState } from 'react';
 import { FaEye, FaCheckCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { superadminLogin } from '../services/operations/authenticationAPI';
+import Swal from 'sweetalert2';
+import { loginSuccess } from '../slices/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginSuperAdmin() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [success, setSuccess] = useState(false)
-    const handledata = (e) => {
-        e.preventDefault()
-        const datauser = {
-            email: email,
-            password: password
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const userData = {
+            email,
+            password
+        };
+    
+        try {
+            const response = await superadminLogin(userData);
+            if (response?.token) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: 'Welcome back!',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+    
+                dispatch(loginSuccess(response)); // Save to Redux store
+    
+                setEmail('');
+                setPassword('');
+                navigate("/");
+            } else {
+                throw new Error('Invalid credentials');
+            }
+    
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: error?.response?.data?.message || error.message
+            });
         }
-        localStorage.setItem('superadminsuccess', JSON.stringify(datauser))
-        setSuccess(true)
-        console.log('superadmin Succesfully', datauser)
-        setEmail('')
-        setPassword('')
-    }
+    };
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
@@ -28,7 +59,7 @@ export default function LoginSuperAdmin() {
                         <span>Successfully logged in!</span>
                     </div>
                 }
-                <form onSubmit={handledata}>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="email" className="block mb-1 text-gray-700">Email:</label>
                     <input
                         type="email"

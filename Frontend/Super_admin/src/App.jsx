@@ -181,6 +181,7 @@ import Bten from './factorycom/Bten';
 import NewPages from './factorycom/NewPages';
 import SubSuperAdminList from './pages/SubSuperAdmin';
 import SubSuperAdminLogin from './pages/LoginasSubSuperAdmin';
+import ProtectedRoute from './utils/ProtectedRoutes';
 import LoginSuperAdmin from './authentaction/LoginSuperAdmin';
 
 const NotFound = () => (
@@ -190,7 +191,7 @@ const NotFound = () => (
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <ProtectedRoute />,
     errorElement: <NotFound />,
     children: [
       { path: "/", element: <SuperAdminDas /> },
@@ -212,15 +213,11 @@ const router = createBrowserRouter([
       { path: "/auditlogs", element: <AuditLogs /> },
       { path: "/reports", element: <Reports /> },
       { path: "/settings", element: <Settings /> },
-      { path: "/sub-super-admin", element: <SubSuperAdminList /> },
+       { path: "/sub-super-admin", element: <SubSuperAdminList /> },
 
     ],
   },
-  // authentication//
-  {
-    path: 'loginsuperadmin',
-    element: <LoginSuperAdmin />
-  },
+
   //Company page
   {
     path: "/admindashboard",
@@ -865,6 +862,11 @@ const router = createBrowserRouter([
   {
     path: "/login-as-subsuperadmin",
     element: <SubSuperAdminLogin />
+  },
+  
+  {
+    path: "/login-as-superadmin",
+    element: <LoginSuperAdmin />
   }
 
 
@@ -880,7 +882,7 @@ function App() {
     console.log(token);
     if (token) {
       localStorage.setItem('superAdminToken', token);
-
+      
       console.log('✅ Token stored from URL:', token);
     }
   }, []);

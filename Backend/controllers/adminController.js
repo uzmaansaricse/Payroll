@@ -38,9 +38,9 @@ export const signupAdmin = async (req, res) => {
 // 🔑 Admin Login
 export const loginAdmin = async (req, res) => {
   try {
-    const { email, password, companyId, accessCode } = req.body;
-
-    const admin = await Admin.findOne({ email, companyId, accessCode });
+   
+    const { email, password,  accessCode } = req.body;
+    const admin = await Admin.findOne({ email});
     if (!admin) return res.status(400).json({ message: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, admin.password);
@@ -48,6 +48,7 @@ export const loginAdmin = async (req, res) => {
 
     const token = jwt.sign({ adminId: admin._id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 
+    const companyId = admin.companyId;
     // Get company permissions (assuming permissions are stored in Company)
     const company = await Company.findOne({ companyId });
     if (!company) return res.status(404).json({ message: "Company not found." });

@@ -1,454 +1,293 @@
 import React, { useState } from "react";
-import { AiOutlineCloud, AiOutlineFileText, AiOutlineLineChart } from "react-icons/ai";
-import { BiChevronDown, BiHome } from "react-icons/bi";
+import { BiHome, BiChevronDown } from "react-icons/bi";
+import { FiUserPlus } from "react-icons/fi";
+import { FaAddressBook, FaChevronUp, FaUserFriends } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { BsCalendarCheck } from "react-icons/bs";
-import { FaAddressBook, FaUserFriends } from "react-icons/fa";
-import { FaChevronUp } from "react-icons/fa6";
-import { FiLogOut, FiUserPlus } from "react-icons/fi";
-import { IoExit, IoHome, IoLogOut } from "react-icons/io5";
-import { MdAccountBox } from "react-icons/md";
-import { Link } from "react-router";
+import { AiOutlineLineChart, AiOutlineFileText } from "react-icons/ai";
 
-export default function Sidebar({ closeSidebar }) {
+const Sidebar = ({ closeSidebar }) => {
+  const { permissions } = useSelector((state) => state.user);
+  console.log("Sidebar permissions:", permissions);
 
-    return (
-        <div className="w-64 h-screen fixed p-4 flex flex-col text-[#F5E7C6] bg-[#152354]">
-            <div className="mb-6 flex gap-4 justify-center items-center">
-                <img  
-                    src="/images/logo.jpeg"
-                    alt="Logo"
-                    className="h-30"
-                />
-                {/* <h1 className="font-bold">MASU</h1> */}
-            </div>
-
-            <Accordion closeSidebar={closeSidebar} />
-        </div>
-    );
-}
-
-const Accordion = ({ closeSidebar }) => {
-    const [openMenu1, setOpenMenu1] = useState(null);
-    const [openMenu, setOpenMenu] = useState(null);
-    const [active, setActive] = useState("one");
-
-    const toggleMenu = (menu) => {
-        setOpenMenu(openMenu === menu ? null : menu);
-    };
-    const toggleMenu1 = (menu) => {
-        setOpenMenu1(openMenu1 === menu ? null : menu);
-    };
-
-
-
-    return (
-        <div className="space-y-1 overflow-y-auto h-full">
-
-            <div className="rounded-lg">
-                <button
-                    className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("profile")}
-                >
-                    <div className="flex items-center">
-                        <BiHome size={20} className="mr-2" />
-                        Dashboard
-                    </div>
-                    {openMenu === "profile" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-
-                <div
-                    className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "profile" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                        }`}
-                >
-                    <span onClick={() => setActive("one")} className={`${active == "one" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                            Admin Dashboard
-                        </Link>
-                    </span>
-
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button
-                    className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("other")}
-                >
-                    <div className="flex items-center">
-                        <FaAddressBook size={20} className="mr-2" />
-                        Add/Edit Employee
-                    </div>
-                    {openMenu === "other" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-
-                <div
-                    className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "other" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                        }`}
-                >
-                    <span onClick={() => setActive("twot")} className={`${active == "twot" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/add" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                            Add Employee
-                        </Link>
-                    </span>
-                    <span onClick={() => setActive("onon")} className={`${active == "onon" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/edit" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                            Edit Employee
-                        </Link>
-                    </span>
-
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button
-                    className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("management")}
-                >
-                    <div className="flex items-center">
-                        <FaUserFriends size={20} className="mr-2" />
-                        Payroll Manage
-                    </div>
-                    {openMenu === "management" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-
-                <div
-                    className={`pl- flex flex-col gap-3 rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "management" ? "max-h-full opacity-100" : "max-h-0 opacity-0"
-                        }`}
-                >
-
-                    <Link to="/personaldetailtable" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("two")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "two" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Employee master information
-                        </span>
-                    </Link>
-
-                    <Link to="/ctcstracture" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("three")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "three" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            CTC Structure
-                        </span>
-                    </Link>
-
-                    <Link to="/paymentsdeductions" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("four")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "four" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Payments & Deductions
-                        </span>
-                    </Link>
-                    <Link to="/perquisitesinvestment" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("five")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "five" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Perquisites Investments
-                        </span>
-                    </Link>
-                    <Link to="/taxcomputation" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("six")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "six" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Tax Computation
-                        </span>
-                    </Link>
-                    <Link to="/remembursementflexi" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("seven")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "seven" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Reimbursement
-                        </span>
-                    </Link>
-                    <Link to="/flexi" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("alag")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "alag" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Flexi
-                        </span>
-                    </Link>
-                    <Link to="/taxcomputationsheet" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("Deductions")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "Deductions" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Tax computation sheet
-                        </span>
-                    </Link>
-                    <Link to="/investments" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("Investments")}
-                            className={`pl-5 text-left block w-full text-[12px] 
-            ${active === "Investments" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Investments (All sections: 80C, 80D, 24b, etc.)
-                        </span>
-                    </Link>
-
-                    <Link to="/payrollcalculation" className="w-full" onClick={closeSidebar}>
-                        <span
-                            onClick={() => setActive("aalag")}
-                            className={`pl-5 text-left block w-full 
-            ${active === "aalag" ? "text-orange-600 border-l-2 border-orange-600 rounded" : ""}`}
-                        >
-                            Payroll Calculation
-                        </span>
-                    </Link>
-
-
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button
-                    className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("leave")}
-                >
-                    <div className="flex items-center">
-                        <BsCalendarCheck size={20} className="mr-2" />
-
-                        Leave Management
-                    </div>
-                    {openMenu === "leave" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-                <div
-                    className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "leave" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                        }`}
-                >
-                    <div className="overflow-y-scroll">
-                        <button
-                            className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                            onClick={() => toggleMenu1("leave1")}
-                        >
-                            <div className="flex items-center">
-                                <BsCalendarCheck size={20} className="mr-2" />
-
-                                Attendence
-                            </div>
-                            {openMenu1 === "leave1" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                        </button>
-                        <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu1 === "leave1" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"}`}>
-                            <span onClick={() => setActive("twentyy10")} className={`${active == "twentyy10" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/shiftmanagement" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Shift Management
-                                </Link>
-                            </span>
-                            <span onClick={() => setActive("twentyy11")} className={`${active == "twentyy11" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/workingdays" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Working Days
-                                </Link>
-                            </span>
-
-                            <span onClick={() => setActive("twentyy13")} className={`${active == "twentyy13" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/haffdaypolicy" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Half Day Policy
-                                </Link>
-                            </span>
-                            <span onClick={() => setActive("twentyy14")} className={`${active == "twentyy14" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/latearrival" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Late Arrival
-                                </Link>
-                            </span>
-                            <span onClick={() => setActive("twentyy15")} className={`${active == "twentyy15" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/companyholiday" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Company Holiday
-                                </Link>
-                            </span>
-                        </div>
-
-                    </div>
-                    <div>
-                        <button
-                            className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                            onClick={() => toggleMenu1("leave2")}
-                        >
-                            <div className="flex items-center">
-                                <BsCalendarCheck size={20} className="mr-2" />
-
-                                Leave
-                            </div>
-                            {openMenu1 === "leave2" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                        </button>
-                        <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu1 === "leave2" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"}`}>
-                            <span onClick={() => setActive("twentyyy4")} className={`${active == "twentyyy4" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/addleave" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Add Leave
-                                </Link>
-                            </span>
-                            <span onClick={() => setActive("twentyyy5")} className={`${active == "twentyyy5" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/leaveapproval" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Leave Approval
-                                </Link>
-                            </span>
-                            <span onClick={() => setActive("twentyyy55")} className={`${active == "twentyyy55" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/leavebalance" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Leave Balance
-                                </Link>
-                            </span>
-                        </div>
-
-                    </div>
-                    <div>
-                        <button
-                            className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                            onClick={() => toggleMenu1("leave3")}
-                        >
-                            <div className="flex items-center">
-                                <BsCalendarCheck size={20} className="mr-2" />
-
-                                Overtime Tracking
-                            </div>
-                            {openMenu1 === "leave3" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                        </button>
-                        <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu1 === "leave3" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"}`}>
-                            <span onClick={() => setActive("twentyyy2")} className={`${active == "twentyyy2" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/role" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    Rule
-                                </Link>
-                            </span>
-                            <span onClick={() => setActive("twentyyy1")} className={`${active == "twentyyy1" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                                <Link to="/histtory" className=" w-full pl-5 text-left" onClick={closeSidebar}>
-                                    History
-                                </Link>
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("Policies1")}  >
-                    <div className="flex items-center"><FiUserPlus size={20} className="mr-2" />Policies </div>
-                    {openMenu === "Policies1" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-                <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "Policies1" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                    }`}   >
-                    <span onClick={() => setActive("ten1")} className={`${active == "ten1" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/leaves" className=" w-full pl-5 text-left" onClick={closeSidebar}>Policies </Link>
-                    </span>
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("boarding")}  >
-                    <div className="flex items-center"><FiUserPlus size={20} className="mr-2" />ON Boarding</div>
-                    {openMenu === "boarding" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-                <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "boarding" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                    }`}   >
-                    <span onClick={() => setActive("ten")} className={`${active == "ten" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/newjoinersform" className=" w-full pl-5 text-left" onClick={closeSidebar}>New Joiners Form</Link>
-                    </span>
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("exit")}  >
-                    <div className="flex items-center"><FiLogOut size={20} className="mr-2" />Exit Formalities</div>
-                    {openMenu === "exit" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-                <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "exit" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                    }`}   >
-                    <span onClick={() => setActive("eleven")} className={`${active == "eleven" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/registrationman" className=" w-full pl-5 text-left" onClick={closeSidebar}>Resignation Management</Link>
-                    </span>
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("performence")}  >
-                    <div className="flex items-center"><AiOutlineLineChart size={20} className="mr-2" />Performance</div>
-                    {openMenu === "performence" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-                <div className={` flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "performence" ? "max-h-70 opacity-100" : "max-h-0 opacity-0"
-                    }`}   >
-                    <span onClick={() => setActive("twel")} className={`${active == "twel" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} `}>
-                        <Link to="/selfEvalution" className=" w-full pl-5 text-left" onClick={closeSidebar}>Self Evalution (KRA)</Link>
-                    </span>
-                </div>
-            </div>
-            <div className="rounded-lg">
-                <button className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("reports")}  >
-                    <div className="flex items-center "><AiOutlineFileText size={20} className="mr-2" />Reports</div>
-                    {openMenu === "reports" ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />}
-                </button>
-
-            </div>
-
-
-            <div className={`flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${openMenu === "reports" ? "h-auto opacity-100" : "max-h-0 opacity-0"}`}>
-                <Link to="/employmaster" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep1")} className={`${active === "rep1" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Employee Master Report</span>
-                </Link>
-                <Link to="/report/ctc-structure" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep2")} className={`${active === "rep2" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>CTC Structure Report</span>
-                </Link>
-                <Link to="/report/payments-deductions" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep3")} className={`${active === "rep3" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Payments & Deductions Report</span>
-                </Link>
-                <Link to="/declaration" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep44")} className={`${active === "rep44" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Declaration</span>
-                </Link>
-                <Link to="/actuals" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep4")} className={`${active === "rep4" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Actuals</span>
-                </Link>
-                <Link to="/report/tax-computation" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep5")} className={`${active === "rep5" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Tax Computation Report</span>
-                </Link>
-                <Link to="/report/reimbursement" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep6")} className={`${active === "rep6" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Reimbursement Report</span>
-                </Link>
-                <Link to="/report/flexi" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep7")} className={`${active === "rep7" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Flexi Report</span>
-                </Link>
-                <Link to="/report/lic-deductions" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep8")} className={`${active === "rep8" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>LIC / Credit Society Deductions</span>
-                </Link>
-                <Link to="/report/investments" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep9")} className={`${active === "rep9" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Investments Report</span>
-                </Link>
-                <Link to="/report/payroll-calculation" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep10")} className={`${active === "rep10" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Payroll Calculation Report</span>
-                </Link>
-                <Link to="/report/attendance" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep11")} className={`${active === "rep11" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Attendance Report</span>
-                </Link>
-                <Link to="/report/leave" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep12")} className={`${active === "rep12" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Leave Report</span>
-                </Link>
-                <Link to="/report/overtime" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep13")} className={`${active === "rep13" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Overtime Report</span>
-                </Link>
-                <Link to="/individual" className="w-full" onClick={closeSidebar}>
-                    <span onClick={() => setActive("rep14")} className={`${active === "rep13" ? "text-orange-600 border-s-2 border-orange-600 rounded" : ""} pl-5 text-left block`}>Individual</span>
-                </Link>
-            </div>
-
-
-            <div className="rounded-lg">
-                <button className="flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out"
-                    onClick={() => toggleMenu("logout")}  >
-                    <div className="flex items-center"><IoLogOut size={20} className="mr-2" />Logout</div>
-                </button>
-            </div>
-
-        </div>
-    );
+  return (
+    <div className="w-64 h-screen fixed p-4 flex flex-col text-[#F5E7C6] bg-[#152354]">
+      <div className="mb-6 flex gap-4 justify-center items-center">
+        <img src="/images/logo.jpeg" alt="Logo" className="h-20" />
+      </div>
+      <AccordionMenu closeSidebar={closeSidebar} permissions={permissions} />
+    </div>
+  );
 };
 
+const AccordionMenu = ({ closeSidebar, permissions = [] }) => {
+  const [openMenus, setOpenMenus] = useState({});
+  const [activeItem, setActiveItem] = useState("");
 
+  const toggleMenu = (menuId) => {
+    setOpenMenus((prev) => ({ ...prev, [menuId]: !prev[menuId] }));
+  };
+
+  const hasPermission = (requiredPermission) => {
+    if (requiredPermission === null || requiredPermission === undefined) return false;
+    return permissions.includes(requiredPermission);
+  };
+
+  
+const sidebarConfig = [
+  {
+    id: "dashboard",
+    title: "Dashboard",
+    icon: <BiHome size={20} className="mr-2" />,
+    permission: "Dashboard",
+    items: [
+      { id: "admin-dashboard", title: "Admin Dashboard", path: "/", permission: null },
+    ],
+  },
+  {
+    id: "employee",
+    title: "Add/Edit Employee",
+    icon: <FaAddressBook size={20} className="mr-2" />,
+    permission: "Add/Edit Employee",
+    items: [
+      { id: "add-employee", title: "Add Employee", path: "/add", permission: "Add Employee" },
+      { id: "edit-employee", title: "Edit Employee", path: "/edit", permission: "Edit Employee" },
+    ],
+  },
+  {
+    id: "payroll",
+    title: "Payroll Manage",
+    icon: <FaUserFriends size={20} className="mr-2" />,
+    permission: "Payroll Manage",
+    items: [
+      { id: "employee-master", title: "Employee master information", path: "/personaldetailtable", permission: "Employee master information" },
+      { id: "ctc-structure", title: "CTC Structure", path: "/ctcstracture", permission: "CTC Structure" },
+      { id: "payments-deductions", title: "Payments & Deductions", path: "/paymentsdeductions", permission: "Payments & Deductions" },
+      { id: "perquisites", title: "Perquisites Investments", path: "/perquisitesinvestment", permission: "Perquisites Investments" },
+      { id: "tax-computation", title: "Tax Computation", path: "/taxcomputation", permission: "Tax Computation" },
+      { id: "reimbursement", title: "Reimbursement", path: "/remembursementflexi", permission: "Reimbursement" },
+      { id: "flexi", title: "Flexi", path: "/flexi", permission: "Flexi" },
+      { id: "tax-sheet", title: "Tax computation sheet", path: "/taxcomputationsheet", permission: "Tax computation sheet" },
+      { id: "investments", title: "Investments (All sections: 80C, 80D, 24b, etc.)", path: "/investments", permission: "Investments" },
+      { id: "payroll-calc", title: "Payroll Calculation", path: "/payrollcalculation", permission: "Payroll Calculation" },
+    ],
+  },
+  {
+    id: "attendance",
+    title: "Leave Management",
+    icon: <BsCalendarCheck size={20} className="mr-2" />,
+    permission: "Leave Management",
+    items: [
+      { id: "shift", title: "Shift Management", path: "/shiftmanagement", permission: "Shift Assign" },
+      { id: "working", title: "Working Days", path: "/workingdays", permission: "Working Days" },
+      { id: "half-day", title: "Half Day Policy", path: "/haffdaypolicy", permission: "Half Day Policy" },
+      { id: "late-arrival", title: "Late Arrival", path: "/latearrival", permission: "Late Arrival" },
+      { id: "holiday", title: "Company Holiday", path: "/companyholiday", permission: "Company Holiday" },
+      { id: "add-leave", title: "Add Leave", path: "/addleave", permission: "Add Leave" },
+      { id: "leave-approval", title: "Leave Approval", path: "/leaveapproval", permission: "Leave Approval" },
+      { id: "leave-balance", title: "Leave Balance", path: "/leavebalance", permission: "Leave Balance" },
+      { id: "overtime-rule", title: "Rule", path: "/role", permission: "Overtime Rule" },
+      { id: "overtime-history", title: "History", path: "/histtory", permission: "Overtime History" },
+    ],
+  },
+  {
+    id: "policies",
+    title: "Policies",
+    icon: <FiUserPlus size={20} className="mr-2" />,
+    permission: "Policies",
+    items: [
+      { id: "policy-page", title: "Policies", path: "/leaves", permission: "Policies" },
+    ],
+  },
+  {
+    id: "onboarding",
+    title: "ON Boarding",
+    icon: <FiUserPlus size={20} className="mr-2" />,
+    permission: "ON Boarding",
+    items: [
+      { id: "new-joiner", title: "New Joiners Form", path: "/newjoinersform", permission: "New Joiners Form" },
+    ],
+  },
+  {
+    id: "exit",
+    title: "Exit Formalities",
+    icon: <IoLogOut size={20} className="mr-2" />,
+    permission: "Exit Formalities",
+    items: [
+      { id: "resignation", title: "Resignation Management", path: "/registrationman", permission: "Resignation Management" },
+    ],
+  },
+  {
+    id: "performance",
+    title: "Performance",
+    icon: <AiOutlineLineChart size={20} className="mr-2" />,
+    permission: "Performance",
+    items: [
+      { id: "self-eval", title: "Self Evalution (KRA)", path: "/selfEvalution", permission: "Self Evalution (KRA)" },
+    ],
+  },
+  {
+    id: "reports",
+    title: "Reports",
+    icon: <AiOutlineFileText size={20} className="mr-2" />,
+    permission: "Reports",
+    items: [
+      { id: "rep1", title: "Employee Master Report", path: "/employmaster", permission: "Employee Master Report" },
+      { id: "rep2", title: "CTC Structure Report", path: "/report/ctc-structure", permission: "CTC Structure Report" },
+      { id: "rep3", title: "Payments & Deductions Report", path: "/report/payments-deductions", permission: "Payments & Deductions Report" },
+      { id: "rep4", title: "Declaration", path: "/declaration", permission: "Declaration" },
+      { id: "rep5", title: "Actuals", path: "/actuals", permission: "Actuals" },
+      { id: "rep6", title: "Tax Computation Report", path: "/report/tax-computation", permission: "Tax Computation Report" },
+      { id: "rep7", title: "Reimbursement Report", path: "/report/reimbursement", permission: "Reimbursement Report" },
+      { id: "rep8", title: "Flexi Report", path: "/report/flexi", permission: "Flexi Report" },
+      { id: "rep9", title: "LIC / Credit Society Deductions", path: "/report/lic-deductions", permission: "LIC / Credit Society Deductions" },
+      { id: "rep10", title: "Investments Report", path: "/report/investments", permission: "Investments Report" },
+      { id: "rep11", title: "Payroll Calculation Report", path: "/report/payroll-calculation", permission: "Payroll Calculation Report" },
+      { id: "rep12", title: "Attendance Report", path: "/report/attendance", permission: "Attendance Report" },
+      { id: "rep13", title: "Leave Report", path: "/report/leave", permission: "Leave Report" },
+      { id: "rep14", title: "Overtime Report", path: "/report/overtime", permission: "Overtime Report" },
+      { id: "rep15", title: "Individual", path: "/individual", permission: "Individual" },
+    ],
+  },
+  {
+    id: "logout",
+    title: "Logout",
+    icon: <IoLogOut size={20} className="mr-2" />,
+    permission: null,
+    items: [],
+  },
+];
+
+//   const sidebarConfig = [
+//     {
+//       id: "dashboard",
+//       title: "Dashboard",
+//       icon: <BiHome size={20} className="mr-2" />,
+//       permission: "Admin Dashboard",
+//       items: [
+//         { id: "admin-dashboard", title: "Admin Dashboard", path: "/", permission: "Admin Dashboard" },
+//       ],
+//     },
+//     {
+//       id: "add-manager",
+//       title: "Add Manager",
+//       icon: <FiUserPlus size={20} className="mr-2" />,
+//       permission: "Add Manager",
+//       items: [
+//         { id: "add-manager-form", title: "Add Manager", path: "/add-manager", permission: "Add Manager" },
+//       ],
+//     },
+//     {
+//       id: "employee",
+//       title: "Add/Edit Employee",
+//       icon: <FaAddressBook size={20} className="mr-2" />,
+//       permission: "Add/Edit Employee",
+//       items: [
+//         { id: "add-employee", title: "Add Employee", path: "/add", permission: "Add Employee" },
+//         { id: "edit-employee", title: "Edit Employee", path: "/edit", permission: "Edit Employee" },
+//       ],
+//     },
+//     {
+//       id: "onboarding",
+//       title: "ON Boarding",
+//       icon: <FiUserPlus size={20} className="mr-2" />,
+//       permission: "ON Boarding",
+//       items: [
+//         { id: "new-joiners", title: "New Joiners Form", path: "/newjoinersform", permission: "ON Boarding" },
+//       ],
+//     },
+//     {
+//       id: "policies",
+//       title: "Policies",
+//       icon: <FiUserPlus size={20} className="mr-2" />,
+//       permission: "Policies",
+//       items: [
+//         { id: "policy-page", title: "Policies", path: "/policies", permission: "Policies" },
+//       ],
+//     },
+//     {
+//       id: "logout",
+//       title: "Logout",
+//       icon: <IoLogOut size={20} className="mr-2" />,
+//       permission: null, // Always visible
+//       items: [],
+//     },
+//   ];
+
+  // Filter tabs and their items based on permissions
+  const visibleTabs = sidebarConfig
+    .filter(tab => {
+      // Always show logout
+      if (tab.permission === null) return true;
+      // Check if tab has permission or has items with permissions
+      return (
+        hasPermission(tab.permission) ||
+        tab.items?.some(item => hasPermission(item.permission))
+      );
+    })
+    .map(tab => ({
+      ...tab,
+      items: tab.items?.filter(item => 
+        item.permission === null || hasPermission(item.permission)
+      ) || []
+    }));
+
+  return (
+    <div className="space-y-1 overflow-y-auto h-full">
+      {visibleTabs.map((tab) => {
+        const isOpen = openMenus[tab.id];
+        const hasItems = tab.items.length > 0;
+
+        return (
+          <div key={tab.id} className="rounded-lg">
+            <button
+              className={`flex justify-between items-center w-full cursor-pointer p-3 rounded-lg transition-all duration-300 ease-in-out ${
+                isOpen ? "bg-blue-900" : ""
+              }`}
+              onClick={() => hasItems && toggleMenu(tab.id)}
+              disabled={!hasItems}
+            >
+              <div className="flex items-center">
+                {tab.icon}
+                <span>{tab.title}</span>
+              </div>
+              {hasItems && (
+                isOpen ? <FaChevronUp size={18} /> : <BiChevronDown size={18} />
+              )}
+            </button>
+
+            {hasItems && (
+              <div
+                className={`flex flex-col gap-3 border-s rounded overflow-hidden transition-all duration-300 ease-in-out ${
+                  isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                {tab.items.map((item) => (
+                  <Link
+                    key={item.id}
+                    to={item.path}
+                    className={`w-full pl-5 py-2 text-left hover:bg-blue-800 rounded ${
+                      activeItem === item.id
+                        ? "text-orange-600 border-s-2 border-orange-600"
+                        : ""
+                    }`}
+                    onClick={() => {
+                      setActiveItem(item.id);
+                      closeSidebar?.();
+                    }}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default Sidebar;

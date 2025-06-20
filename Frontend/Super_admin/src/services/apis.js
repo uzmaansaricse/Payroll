@@ -1,5 +1,5 @@
 //const BASE_URL = "http://localhost:4000/api/v1"
-const BASE_URL = "http://localhost:5000/api"
+const BASE_URL = "http://localhost:4000/api"
 
 // AUTH ENDPOINTS
 export const superadminendpoints = {
@@ -15,3 +15,7 @@ export const companyendpoints = {
   COMPANY_PERMISSIONS_UPDATE: BASE_URL + "/company/updatecompanypermissions",
 
 };
+
+export const authEndpoints = {
+  SUPER_ADMIN_LOGIN: BASE_URL + "/superadmin/login",
+}
