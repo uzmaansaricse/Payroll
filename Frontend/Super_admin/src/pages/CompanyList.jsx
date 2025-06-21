@@ -14,11 +14,13 @@ const CompanyList = () => {
     try {
       setLoading(true);
       const res = await fetchCompaniesList();
+    console.log("Fetched companies:", res.data);
       const formattedCompanies = res.data.map((company) => ({
         ...company,
         adminEmail: company.admin?.email || company.adminEmail,
         adminPassword: company.admin?.password || company.adminPassword,
       }));
+      console.log("Formatted companies:", formattedCompanies);
       setCompanies(formattedCompanies);
       setFilteredCompanies(formattedCompanies);
     } catch (error) {

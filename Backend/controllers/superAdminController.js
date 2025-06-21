@@ -200,12 +200,30 @@ export const updateStaticFieldConfig = async (req, res) => {
 
 
 
+
+
+
 export const getAllCompanies = async (req, res) => {
   try {
     const companies = await Company.find();
-    res.json(companies);
+
+    // Use Promise.all to fetch admins in parallel
+    const companiesWithAdmins = await Promise.all(
+      companies.map(async (company) => {
+        const admin = await Admin.findOne({ companyId: company.companyId });
+console.log(admin)
+        return {
+          ...company._doc, // spread company data
+          adminEmail: admin?.email || null,
+          adminPassword: admin?.password || null,
+        };
+      })
+    );
+
+    res.json(companiesWithAdmins);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching companies" });
+    console.error("Error:", error);
+    res.status(500).json({ message: "Error fetching companies with admins" });
   }
 };
 
