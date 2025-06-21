@@ -47,6 +47,16 @@ const sidebarConfig = [
     ],
   },
   {
+    id: "add-manager",
+    title: "Add Manager",
+    icon: <FaAddressBook size={20} className="mr-2" />,
+    permission: "Add Manager",
+    items: [
+      { id: "add-manager", title: "Add Manager", path: "/NewHire", permission: "Add Manager" },
+
+    ],
+  },
+  {
     id: "employee",
     title: "Add/Edit Employee",
     icon: <FaAddressBook size={20} className="mr-2" />,
@@ -80,16 +90,19 @@ const sidebarConfig = [
     icon: <BsCalendarCheck size={20} className="mr-2" />,
     permission: "Leave Management",
     items: [
-      { id: "shift", title: "Shift Management", path: "/shiftmanagement", permission: "Shift Assign" },
+      { id: "shift", title: "Shift Management", path: "/shiftmanagement", permission: "Shift Management" },
+      { id: "shift-assign", title: "Shift Assign", path: "/shiftassign", permission: "Shift Assign" },
+      { id: "attendance-assign", title: "Attendance Assign", path: "/TaxComputationAllinpage", permission: "Attendance Assign" },
       { id: "working", title: "Working Days", path: "/workingdays", permission: "Working Days" },
       { id: "half-day", title: "Half Day Policy", path: "/haffdaypolicy", permission: "Half Day Policy" },
       { id: "late-arrival", title: "Late Arrival", path: "/latearrival", permission: "Late Arrival" },
       { id: "holiday", title: "Company Holiday", path: "/companyholiday", permission: "Company Holiday" },
       { id: "add-leave", title: "Add Leave", path: "/addleave", permission: "Add Leave" },
+      { id: "leave-assign", title: "Leave Assign", path: "/AbsentTracking", permission: "Leave Assign" },
       { id: "leave-approval", title: "Leave Approval", path: "/leaveapproval", permission: "Leave Approval" },
       { id: "leave-balance", title: "Leave Balance", path: "/leavebalance", permission: "Leave Balance" },
-      { id: "overtime-rule", title: "Rule", path: "/role", permission: "Overtime Rule" },
-      { id: "overtime-history", title: "History", path: "/histtory", permission: "Overtime History" },
+      { id: "overtime-rule", title: "Rule", path: "/role", permission: "Rule" },
+      { id: "overtime-history", title: "History", path: "/histtory", permission: "History" },
     ],
   },
   {
@@ -116,7 +129,8 @@ const sidebarConfig = [
     icon: <IoLogOut size={20} className="mr-2" />,
     permission: "Exit Formalities",
     items: [
-      { id: "resignation", title: "Resignation Management", path: "/registrationman", permission: "Resignation Management" },
+      { id: "resignation", title: "Resignation Setup", path: "/FlexiTab", permission: "Flexi" },
+      { id: "resignation", title: "Resignation Approval", path: "/registrationman", permission: "Resignation Approval" }
     ],
   },
   {
