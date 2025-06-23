@@ -23,7 +23,7 @@ export const registerCompany = async (req, res) => {
       nonRequiredFields, // Include nonRequiredFields
        permissions
     } = req.body;
-
+console.log("Registering company with data:", customFields);
     // Check for existing email
     const existingCompany = await Company.findOne({ email });
     if (existingCompany) {

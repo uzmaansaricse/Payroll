@@ -1,4 +1,15 @@
 import mongoose from 'mongoose';
+const customFieldSchema = new mongoose.Schema({
+  fieldName: { type: String,  }, // Display name
+   fieldValue: { type: String,  },  // Key used in forms/backend
+  value: { type: mongoose.Schema.Types.Mixed }, // Can store any type
+  type: {
+    type: String,
+    enum: ['text', 'email', 'number', 'select', 'checkbox'],
+
+  },
+  required: { type: Boolean, default: false }
+}, { _id: false });
 
 const companySchema = new mongoose.Schema({
   companyName: {
@@ -65,18 +76,7 @@ const companySchema = new mongoose.Schema({
     designation: String,
   },
 
-  customFields: [
-    {
-      label: String,
-      name: String,
-      value: mongoose.Schema.Types.Mixed,
-      type: {
-        type: String,
-        enum: ['text', 'email', 'number', 'select', 'checkbox'],
-      },
-      required: Boolean,
-    }
-  ],
+   customFields: [customFieldSchema],
 
   approvalConfig: {
     type: Map,
