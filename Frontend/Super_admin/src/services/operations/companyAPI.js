@@ -20,6 +20,15 @@ export async function registerCompany(companydata) {
     } 
   };
 
+  export async function updateCompanyDetails(companyId, updatedData) {
+  try {
+    const response = await apiConnector("PUT", `${companyendpoints.UPDATE_COMPANY}/${companyId}`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating company details:", error);
+  }
+}
+
   export async function fetchSubSuperAdmins (){
       try{
         const response = await apiConnector("GET",superadminendpoints.SUB_ADMIN_LIST);

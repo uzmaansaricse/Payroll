@@ -1,5 +1,5 @@
-//const BASE_URL = "http://localhost:4000/api"
-const BASE_URL = "https://payroll-gujd.onrender.com/api"
+const BASE_URL = "http://localhost:4000/api"
+//const BASE_URL = "https://payroll-gujd.onrender.com/api"
 
 // AUTH ENDPOINTS
 export const superadminendpoints = {
@@ -13,6 +13,7 @@ export const superadminendpoints = {
 export const companyendpoints = {
  
   COMPANY_PERMISSIONS_UPDATE: BASE_URL + "/company/updatecompanypermissions",
+  UPDATE_COMPANY: BASE_URL + "/superadmin/updateCompany",
 
 };
 

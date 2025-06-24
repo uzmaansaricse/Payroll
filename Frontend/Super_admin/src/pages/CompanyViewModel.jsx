@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { updateCompanyDetails } from "../services/operations/companyAPI";
 
 const CompanyViewModal = ({ company, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
@@ -36,8 +37,9 @@ const CompanyViewModal = ({ company, onClose, onUpdate }) => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`/api/superadmin/updateCompany/${formData._id}`, formData);
+      await updateCompanyDetails(formData._id, formData);
       onUpdate();
+      onClose();
       setEditMode(false);
     } catch (error) {
       console.error("Error saving company details", error);
